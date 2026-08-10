@@ -1,0 +1,35 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --watch && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaniyalAsif7778/Weather-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/DaniyalAsif7778/Weather-App/issues"
+  },
+  "homepage": "https://github.com/DaniyalAsif7778/Weather-App#readme",
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.5"
+  },
+  "dependencies": {
+    "@phosphor-icons/web": "^2.1.2",
+    "geist": "^1.7.2",
+    "gsap": "^3.15.0",
+    "howler": "^2.2.4"
+  }
+}

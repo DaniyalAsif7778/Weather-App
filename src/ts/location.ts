@@ -1,0 +1,2 @@
+function getUserLocation(){}
+export {getUserLocation}

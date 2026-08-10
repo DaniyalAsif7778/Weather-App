@@ -1,0 +1,602 @@
+/* ============================================
+   DESIGN TOKENS — Heavy Black & Dark Blue
+   A complete design system for moody, high-contrast
+   dark interfaces. Black anchors, dark blue breathes.
+   ============================================ */
+
+:root {
+    /* ==========================================
+       COLOR TOKENS
+       Black foundation with dark blue atmosphere
+    ========================================== */
+
+    /* Backgrounds — pure black base */
+    --bg: #000000;
+    --bg-raised: #0e1f3a;
+    --bg-elevated: #122a40;
+
+    /* Surfaces — dark blue layers */
+    --surface: #081526;
+    --surface-2: #0c1e32;
+    --surface-3: #122a40;
+    --surface-raised: #1a334d;
+
+    /* Borders — blue-tinted structure */
+    --border: #264b6b;
+    --border-soft: #1a334d;
+    --border-faint: #0f2940;
+
+    /* Text — high contrast */
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-faint: #475569;
+    --text-inverse: #0b1120;
+
+    /* ==========================================
+       WEATHER ACCENTS — condition identity
+    ========================================== */
+    --sun: #e8a33d;
+    --sun-dim: #6b4e22;
+    --sun-glow: rgba(232, 163, 61, 0.2);
+
+    --rain: #4fa9c9;
+    --rain-dim: #22404b;
+    --rain-glow: rgba(79, 169, 201, 0.2);
+
+    --cloud: #9aa0a6;
+    --cloud-dim: #4a4f54;
+    --cloud-glow: rgba(154, 160, 166, 0.12);
+
+    --snow: #bfe3ec;
+    --snow-dim: #5a7a82;
+    --snow-glow: rgba(191, 227, 236, 0.15);
+
+    --storm: #b0563f;
+    --storm-dim: #4a2a22;
+    --storm-glow: rgba(176, 86, 63, 0.15);
+
+    /* ==========================================
+       INTERFACE ACCENTS — medium contrast
+    ========================================== */
+    --accent-blue: #3b82f6;
+    --accent-blue-dim: #172554;
+    --accent-blue-glow: rgba(59, 130, 246, 0.15);
+
+    --accent-cyan: #38bdf8;
+    --accent-cyan-dim: #164e6b;
+    --accent-cyan-glow: rgba(56, 189, 248, 0.15);
+
+    --accent-violet: #818cf8;
+    --accent-violet-dim: #2e1f6b;
+    --accent-violet-glow: rgba(129, 140, 248, 0.12);
+
+    --accent-pink: #f472b6;
+    --accent-pink-dim: #6b214a;
+    --accent-pink-glow: rgba(244, 114, 182, 0.12);
+
+    /* ==========================================
+       SEMANTIC COLORS
+    ========================================== */
+    --good: #34d399;
+    --good-dim: #064e3b;
+    --good-glow: rgba(52, 211, 153, 0.15);
+
+    --warn: #e8a33d;
+    --warn-dim: #6b4e22;
+    --warn-glow: rgba(232, 163, 61, 0.15);
+
+    --bad: #f87171;
+    --bad-dim: #6b2121;
+    --bad-glow: rgba(248, 113, 113, 0.15);
+
+    /* ==========================================
+       SPACING & SIZING
+    ========================================== */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-7: 28px;
+    --space-8: 32px;
+    --space-9: 40px;
+    --space-10: 48px;
+
+    /* ==========================================
+       BORDER RADIUS
+    ========================================== */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-xl: 28px;
+    --radius-full: 9999px;
+
+    /* ==========================================
+       TYPOGRAPHY
+    ========================================== */
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+
+    /* Font sizes */
+    --text-xs: 10px;
+    --text-sm: 11px;
+    --text-base: 13px;
+    --text-md: 15px;
+    --text-lg: 18px;
+    --text-xl: 22px;
+    --text-2xl: 28px;
+    --text-3xl: 36px;
+    --text-4xl: 48px;
+    --text-5xl: 64px;
+    --text-6xl: 96px;
+
+    /* Font weights */
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* Line heights */
+    --leading-tight: 1.1;
+    --leading-snug: 1.3;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.6;
+
+    /* Letter spacing */
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0em;
+    --tracking-wide: 0.02em;
+    --tracking-wider: 0.08em;
+    --tracking-widest: 0.1em;
+
+    /* ==========================================
+       SHADOWS
+    ========================================== */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.6);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.7);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.85);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.9);
+    --shadow-glow-blue: 0 0 30px -5px rgba(59, 130, 246, 0.15);
+    --shadow-glow-cyan: 0 0 30px -5px rgba(56, 189, 248, 0.12);
+    --shadow-inner: inset 0 1px 0 rgba(38, 75, 107, 0.2);
+
+    /* ==========================================
+       TRANSITIONS
+    ========================================== */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.25s ease;
+    --transition-slow: 0.4s ease;
+
+    /* ==========================================
+       Z-INDEX LAYERS
+    ========================================== */
+    --z-base: 0;
+    --z-elevated: 10;
+    --z-dropdown: 100;
+    --z-modal: 1000;
+    --z-tooltip: 1100;
+    --z-toast: 1200;
+}
+
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-soft);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
+
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* ---- Backgrounds ---- */
+.bg-base {
+    background: var(--bg);
+}
+.bg-surface {
+    background: var(--surface);
+}
+.bg-surface-2 {
+    background: var(--surface-2);
+}
+.bg-raised {
+    background: var(--bg-raised);
+}
+
+/* ---- Text ---- */
+.text-base {
+    color: var(--text);
+}
+.text-muted {
+    color: var(--text-muted);
+}
+.text-faint {
+    color: var(--text-faint);
+}
+
+/* ---- Borders ---- */
+.border-base {
+    border-color: var(--border);
+}
+.border-soft {
+    border-color: var(--border-soft);
+}
+.border-faint {
+    border-color: var(--border-faint);
+}
+
+/* ---- Typography helpers ---- */
+.font-display {
+    font-family: var(--font-display);
+}
+.font-body {
+    font-family: var(--font-body);
+}
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+/* ---- Rounded corners ---- */
+.rounded-sm {
+    border-radius: var(--radius-sm);
+}
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+.rounded-full {
+    border-radius: var(--radius-full);
+}
+
+/* ---- Shadows ---- */
+.shadow-sm {
+    box-shadow: var(--shadow-sm);
+}
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+.shadow-glow {
+    box-shadow: var(--shadow-glow-blue);
+}
+
+/* ---- Layout ---- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+/* ---- Glass/Blur effects ---- */
+.glass {
+    background: rgba(8, 21, 38, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.glass-light {
+    background: rgba(8, 21, 38, 0.3);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* ---- Selection ---- */
+::selection {
+    background: var(--accent-blue-dim);
+    color: var(--text);
+}
+
+
+/* ============================================
+   RESET / BASE STYLES
+   (optional — include if starting fresh)
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* ============================================
+   ATMOSPHERE GRADIENTS (for hero/ambient use)
+   ============================================ */
+
+/* Black-to-blue atmospheric gradient */
+.bg-atmosphere {
+    background:
+        radial-gradient(ellipse 80% 60% at 100% 50%, rgba(10, 31, 58, 0.7), transparent 70%),
+        radial-gradient(ellipse 60% 80% at 0% 50%, #000000, transparent 60%),
+        #000000;
+}
+
+/* Left-heavy black gradient */
+.bg-black-heavy {
+    background: radial-gradient(ellipse at 0% 50%, #000000, transparent 90%);
+}
+
+/* Right-heavy blue gradient */
+.bg-blue-atmosphere {
+    background: radial-gradient(ellipse at 100% 50%, rgba(8, 21, 38, 0.8), transparent 70%);
+}
+
+/* Central vignette */
+.bg-vignette {
+    background:
+        radial-gradient(ellipse 90% 90% at 78% 15%, transparent 0%, rgba(0, 0, 0, 0.6) 55%, rgba(0, 0, 0, 0.95) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS (reference)
+   ============================================ */
+/*
+   --breakpoint-sm: 640px;
+   --breakpoint-md: 768px;
+   --breakpoint-lg: 1024px;
+   --breakpoint-xl: 1280px;
+   --breakpoint-2xl: 1536px;
+*/
+
+
+/* ============================================
+   EXAMPLE: CARD COMPONENT
+   (shows how to use tokens in practice)
+   ============================================ */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+    border-color: var(--border);
+    box-shadow: var(--shadow-glow-blue);
+}
+
+.card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--text);
+    margin-bottom: var(--space-2);
+}
+
+.card-subtitle {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+}
+
+
+/* ============================================
+   EXAMPLE: BUTTON COMPONENT
+   ============================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-weight: var(--font-medium);
+    font-size: var(--text-sm);
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background: var(--accent-blue);
+    color: var(--text);
+    border-color: var(--accent-blue);
+}
+
+.btn-primary:hover {
+    background: var(--accent-blue-dim);
+    border-color: var(--accent-blue-dim);
+    box-shadow: var(--shadow-glow-blue);
+}
+
+.btn-secondary {
+    background: var(--surface-2);
+    color: var(--text-muted);
+    border-color: var(--border-soft);
+}
+
+.btn-secondary:hover {
+    background: var(--surface-3);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border-color: transparent;
+}
+
+.btn-ghost:hover {
+    background: var(--surface);
+    color: var(--text);
+}
+
+
+/* ============================================
+   EXAMPLE: INPUT COMPONENT
+   ============================================ */
+.input {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    width: 100%;
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--text-faint);
+}
+
+.input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px var(--accent-blue-glow);
+}
+
+.input:hover {
+    border-color: var(--border);
+}
+
+
+/* ============================================
+   EXAMPLE: BADGE/PILL COMPONENT
+   ============================================ */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.pill:hover {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.pill-active {
+    background: var(--accent-blue-dim);
+    border-color: var(--accent-blue);
+    color: var(--text);
+}
+
+
+/* ============================================
+   EXAMPLE: DIVIDER
+   ============================================ */
+.divider {
+    border: none;
+    border-top: 1px solid var(--border-soft);
+    margin: var(--space-6) 0;
+}
+
+.divider-dashed {
+    border-top: 1px dashed var(--border-soft);
+}
+
+
+/* ============================================
+   EXAMPLE: PROGRESS BAR
+   ============================================ */
+.progress {
+    height: 4px;
+    border-radius: 4px;
+    background: var(--border-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent-blue-dim), var(--accent-blue));
+}
+
+.progress-bar-cyan {
+    background: linear-gradient(90deg, var(--accent-blue-dim), var(--accent-cyan));
+}
+
+.progress-bar-green {
+    background: linear-gradient(90deg, var(--good-dim), var(--good));
+}
+
+.progress-bar-pink {
+    background: linear-gradient(90deg, var(--storm-dim), var(--accent-pink));
+}
+
+
+/* ============================================
+   EXPORT ALL TOKENS FOR JAVASCRIPT
+   (optional — use with CSS-in-JS or theming)
+   ============================================ */
+:export {
+    bg: var(--bg);
+    surface: var(--surface);
+    text: var(--text);
+    accentBlue: var(--accent-blue);
+    /* add more as needed */
+}

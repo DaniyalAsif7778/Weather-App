@@ -1,0 +1,3 @@
+function fetchData(){}
+
+export {fetchData}
