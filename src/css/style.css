@@ -1045,7 +1045,7 @@ img {
   right: -5%;
   transition: all var(--transition-bg);
 }
-
+/* 
 .hero-section[data-weather="clear"] .hero-weather-glow {
   background: var(--color-weather-clear);
 }
@@ -1072,7 +1072,7 @@ img {
 
 .hero-section[data-weather="night"] .hero-weather-glow {
   background: var(--color-weather-night);
-}
+} */
 
 /* --- Photo Overlay (empty — you add <img> later) --- */
 .hero-photo-overlay {
@@ -1105,8 +1105,8 @@ img {
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-5xl);
   padding: var(--space-16) var(--space-12);
-  backdrop-filter: blur(var(--blur-md));
-  -webkit-backdrop-filter: blur(var(--blur-md));
+  /* backdrop-filter: blur(var(--blur-md)); */
+  /* -webkit-backdrop-filter: blur(var(--blur-md)); */
   overflow: hidden;
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
 }

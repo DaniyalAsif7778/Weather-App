@@ -1,12 +1,12 @@
-import { getUserLocation, getLatLng } from "./location.js";
+import { getUserLocation } from "./location.js";
 
 async function fetchData(cityName:string | undefined ) {
      if (cityName == undefined) {
         throw console.error("cityName must be a string")
      }
     
-  const { latitude, longitude } = await getLatLng(cityName);   
-  const { wheatherData } = await getUserLocation(latitude ,longitude);
+      
+  const { wheatherData } = await getUserLocation(cityName);
  return {wheatherData}; 
 }
 

@@ -1,792 +1,715 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Aura Weather</title>
-  <meta name="description" content="A premium atmospheric weather experience." />
-  <meta name="theme-color" content="#0A0A0F" />
-
-  <!-- Geist Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Phosphor Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
-
-  <!-- Tailwind CSS v4 (via CDN for preview; use npm build for production) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-<script src="./src/ts/app.ts"  type="module"></script>
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="/src/css/style.css" />
-</head>
-<body class="bg-[#0A0A0F] text-white font-sans antialiased overflow-x-hidden">
-
-  <!-- ==================== CANVAS BACKGROUND ==================== -->
-  
-  <!-- ==================== AMBIENT GLOWS ==================== -->
-  
-
-  <!-- ==================== APP CONTAINER ==================== -->
-  <div id="app" class="  flex     ">
-         <div class="city-overlay">
-  <form class="city-form">
-    <h2>Enter City Name</h2>
-
-    <input
-      type="text"
-      name="city"
-      value="kkk"
-      placeholder="Enter city name..."
-      autocomplete="off"
-      id="cityname_input"
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-  </form>
-</div>
-    <!-- ============================================================ -->
-    <!-- DESKTOP SIDEBAR (Left Fixed) — Hidden on mobile/tablet       -->
-    <!-- ============================================================ -->
-    <aside class="desktop-sidebar" >
-      <!-- Logo -->
-      <div class="sidebar-logo">
-        <i class="ph ph-cloud-snow text-2xl text-[#00D4FF]"></i>
-        <span>Aura Weather</span>
+    <title>Aura Weather</title>
+    <meta
+      name="description"
+      content="A premium atmospheric weather experience."
+    />
+    <meta name="theme-color" content="#0A0A0F" />
+
+    <!-- Geist Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+    <!-- Tailwind CSS v4 (via CDN for preview; use npm build for production) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./src/ts/app.ts" type="module"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/src/css/style.css" />
+  </head>
+  <body class="bg-[#0A0A0F] text-white font-sans antialiased overflow-x-hidden">
+    <!-- ==================== CANVAS BACKGROUND ==================== -->
+
+    <!-- ==================== AMBIENT GLOWS ==================== -->
+
+    <!-- ==================== APP CONTAINER ==================== -->
+    <div id="app" class="flex">
+      <div class="city-overlay">
+        <form class="city-form">
+          <h2>Enter City Name</h2>
+
+          <input
+            type="text"
+            name="city"
+            value="Islamabad"
+            placeholder="Enter city name..."
+            autocomplete="off"
+            id="cityname_input"
+          />
+        </form>
       </div>
-
-      <!-- Search -->
-      <div class="sidebar-search">
-        <i class="ph ph-magnifying-glass text-[#6B6B7B] text-sm"></i>
-        <input type="text" placeholder="Search city..." />
-      </div>
-
-      <!-- Navigation -->
-      <nav class="sidebar-nav">
-        <div class="nav-section-title">Navigation</div>
-        <a href="#" class="nav-link active">
-          <i class="ph ph-house nav-icon"></i>
-          <span>Dashboard</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="ph ph-clock nav-icon"></i>
-          <span>Hourly</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="ph ph-calendar nav-icon"></i>
-          <span>7-Day</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="ph ph-chart-bar nav-icon"></i>
-          <span>Details</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="ph ph-trend-up nav-icon"></i>
-          <span>History</span>
-        </a>
-
-        <div class="nav-section-title mt-4">Tools</div>
-        <a href="#" class="nav-link">
-          <i class="ph ph-globe-hemisphere-west nav-icon"></i>
-          <span>My Cities</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="ph ph-scales nav-icon"></i>
-          <span>Compare</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="ph ph-bell nav-icon"></i>
-          <span>Alerts</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="ph ph-gear nav-icon"></i>
-          <span>Settings</span>
-        </a>
-      </nav>
-
-      <!-- Recent Cities -->
-      <div class="sidebar-recent">
-        <div class="nav-section-title">Recent</div>
-        <a href="#" class="recent-item">
-          <span>New York</span>
-          <span class="recent-temp">26° <i class="ph ph-sun text-amber-400"></i></span>
-        </a>
-        <a href="#" class="recent-item">
-          <span>Tokyo</span>
-          <span class="recent-temp">22° <i class="ph ph-cloud text-slate-400"></i></span>
-        </a>
-        <a href="#" class="recent-item">
-          <span>Dubai</span>
-          <span class="recent-temp">38° <i class="ph ph-sun text-amber-400"></i></span>
-        </a>
-        <a href="#" class="recent-item">
-          <span>Paris</span>
-          <span class="recent-temp">20° <i class="ph ph-cloud-sun text-slate-300"></i></span>
-        </a>
-      </div>
-    </aside>
-
-    <!-- ============================================================ -->
-    <!-- MAIN CONTENT AREA                                            -->
-    <!-- ============================================================ -->
-    <main class="main-area"  >
-
-      <!-- ==================== DESKTOP TOP NAVBAR ==================== -->
-      <header class="desktop-navbar">
-        <div class="navbar-location">
-          <i class="ph ph-map-pin text-[#00D4FF]"></i>
-          <span>London, <strong>United Kingdom</strong></span>
+      <!-- ============================================================ -->
+      <!-- DESKTOP SIDEBAR (Left Fixed) — Hidden on mobile/tablet       -->
+      <!-- ============================================================ -->
+      <aside class="desktop-sidebar">
+        <!-- Logo -->
+        <div class="sidebar-logo">
+          <i class="ph ph-cloud-snow text-2xl text-[#00D4FF]"></i>
+          <span>Aura Weather</span>
         </div>
-        <div class="navbar-actions">
-          <button class="nav-btn" aria-label="Notifications">
-            <i class="ph ph-bell"></i>
-          </button>
-          <button class="nav-btn nav-btn-primary">
-            <i class="ph ph-plus"></i>
-            <span>Add City</span>
-          </button>
-        </div>
-      </header>
 
-      <!-- ==================== MOBILE FLOATING TOP NAVBAR ==================== -->
-      <header class="mobile-navbar">
-        <div class="mobile-search">
-          <i class="ph ph-magnifying-glass text-[#6B6B7B]"></i>
+        <!-- Search -->
+        <div class="sidebar-search">
+          <i class="ph ph-magnifying-glass text-[#6B6B7B] text-sm"></i>
           <input type="text" placeholder="Search city..." />
         </div>
-        <button class="mobile-menu-btn" aria-label="Open menu">
-          <i class="ph ph-list text-lg"></i>
-        </button>
-      </header>
 
-      <!-- ==================== MOBILE FLOATING BOTTOM NAVBAR ==================== -->
-      <nav class="mobile-bottom-nav">
-        <a href="#" class="bottom-nav-item active">
-          <i class="ph ph-house bottom-nav-icon"></i>
-          <span>Home</span>
-        </a>
-        <a href="#" class="bottom-nav-item">
-          <i class="ph ph-clock bottom-nav-icon"></i>
-          <span>Hourly</span>
-        </a>
-        <a href="#" class="bottom-nav-item">
-          <i class="ph ph-calendar bottom-nav-icon"></i>
-          <span>7-Day</span>
-        </a>
-        <a href="#" class="bottom-nav-item">
-          <i class="ph ph-globe-hemisphere-west bottom-nav-icon"></i>
-          <span>Cities</span>
-        </a>
-        <button class="bottom-nav-item" aria-label="Open menu">
-          <i class="ph ph-list bottom-nav-icon"></i>
-          <span>Menu</span>
-        </button>
-      </nav>
-
-      <!-- ==================== MOBILE FLOATING SIDEBAR (Bottom Sheet) ==================== -->
-      <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
-      <aside class="mobile-sidebar" id="mobileSidebar">
-        <div class="mobile-sidebar-handle"></div>
-        <div class="mobile-sidebar-title">Menu</div>
-
-        <nav class="mobile-sidebar-nav">
-          <a href="#" class="mobile-nav-link active">
-            <i class="ph ph-house"></i>
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+          <div class="nav-section-title">Navigation</div>
+          <a href="#" class="nav-link active">
+            <i class="ph ph-house nav-icon"></i>
             <span>Dashboard</span>
           </a>
-          <a href="#" class="mobile-nav-link">
-            <i class="ph ph-clock"></i>
+          <a href="#" class="nav-link">
+            <i class="ph ph-clock nav-icon"></i>
             <span>Hourly</span>
           </a>
-          <a href="#" class="mobile-nav-link">
-            <i class="ph ph-calendar"></i>
-            <span>7-Day Forecast</span>
+          <a href="#" class="nav-link">
+            <i class="ph ph-calendar nav-icon"></i>
+            <span>7-Day</span>
           </a>
-          <a href="#" class="mobile-nav-link">
-            <i class="ph ph-chart-bar"></i>
+          <a href="#" class="nav-link">
+            <i class="ph ph-chart-bar nav-icon"></i>
             <span>Details</span>
           </a>
-          <a href="#" class="mobile-nav-link">
-            <i class="ph ph-trend-up"></i>
+          <a href="#" class="nav-link">
+            <i class="ph ph-trend-up nav-icon"></i>
             <span>History</span>
           </a>
 
-          <div class="mobile-sidebar-divider"></div>
-
-          <a href="#" class="mobile-nav-link">
-            <i class="ph ph-globe-hemisphere-west"></i>
+          <div class="nav-section-title mt-4">Tools</div>
+          <a href="#" class="nav-link">
+            <i class="ph ph-globe-hemisphere-west nav-icon"></i>
             <span>My Cities</span>
           </a>
-          <a href="#" class="mobile-nav-link">
-            <i class="ph ph-scales"></i>
+          <a href="#" class="nav-link">
+            <i class="ph ph-scales nav-icon"></i>
             <span>Compare</span>
           </a>
-          <a href="#" class="mobile-nav-link">
-            <i class="ph ph-bell"></i>
+          <a href="#" class="nav-link">
+            <i class="ph ph-bell nav-icon"></i>
             <span>Alerts</span>
           </a>
-          <a href="#" class="mobile-nav-link">
-            <i class="ph ph-gear"></i>
+          <a href="#" class="nav-link">
+            <i class="ph ph-gear nav-icon"></i>
             <span>Settings</span>
           </a>
-
-          <div class="mobile-sidebar-divider"></div>
-
-          <div class="mobile-sidebar-recent">
-            <div class="mobile-recent-title">Recent</div>
-            <a href="#" class="mobile-recent-item">
-              <span>New York</span>
-              <span class="mobile-recent-temp">26° <i class="ph ph-sun text-amber-400"></i></span>
-            </a>
-            <a href="#" class="mobile-recent-item">
-              <span>Tokyo</span>
-              <span class="mobile-recent-temp">22° <i class="ph ph-cloud text-slate-400"></i></span>
-            </a>
-            <a href="#" class="mobile-recent-item">
-              <span>Dubai</span>
-              <span class="mobile-recent-temp">38° <i class="ph ph-sun text-amber-400"></i></span>
-            </a>
-          </div>
         </nav>
+
+        <!-- Recent Cities -->
+        <div class="sidebar-recent">
+          <div class="nav-section-title">Recent</div>
+          <a href="#" class="recent-item">
+            <span>New York</span>
+            <span class="recent-temp"
+              >26° <i class="ph ph-sun text-amber-400"></i
+            ></span>
+          </a>
+          <a href="#" class="recent-item">
+            <span>Tokyo</span>
+            <span class="recent-temp"
+              >22° <i class="ph ph-cloud text-slate-400"></i
+            ></span>
+          </a>
+          <a href="#" class="recent-item">
+            <span>Dubai</span>
+            <span class="recent-temp"
+              >38° <i class="ph ph-sun text-amber-400"></i
+            ></span>
+          </a>
+          <a href="#" class="recent-item">
+            <span>Paris</span>
+            <span class="recent-temp"
+              >20° <i class="ph ph-cloud-sun text-slate-300"></i
+            ></span>
+          </a>
+        </div>
       </aside>
 
-      <!-- ==================== MAIN CONTENT SECTIONS (EMPTY — FILL LATER) ==================== -->
-      <div class="content-wrapper" style="background-image: url('./src/assets/flood.avif'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; margin: 0;" >
+      <!-- ============================================================ -->
+      <!-- MAIN CONTENT AREA                                            -->
+      <!-- ============================================================ -->
+      <main class="main-area">
+        <!-- ==================== DESKTOP TOP NAVBAR ==================== -->
+        <header class="desktop-navbar">
+          <div class="navbar-location">
+            <i class="ph ph-map-pin text-[#00D4FF]"></i>
+            <span>London, <strong>United Kingdom</strong></span>
+          </div>
+          <div class="navbar-actions">
+            <button class="nav-btn" aria-label="Notifications">
+              <i class="ph ph-bell"></i>
+            </button>
+            <button class="nav-btn nav-btn-primary">
+              <i class="ph ph-plus"></i>
+              <span>Add City</span>
+            </button>
+          </div>
+        </header>
 
-      <!-- ==================== HERO SECTION ==================== -->
-<section class="hero-section" id="weather-showcase" data-weather="clear">
-  
-  <!-- Dynamic Background Layer (no images — you add img tags here later) -->
-   
-  
-  <!-- Weather Photo Overlay (empty — you fill with <img> later) -->
-  <div class="hero-photo-overlay" id="hero-photo-overlay">
-    <!-- <img src="your-photo.jpg" alt="Weather" /> -->
-  </div>
+        <!-- ==================== MOBILE FLOATING TOP NAVBAR ==================== -->
+        <header class="mobile-navbar">
+          <div class="mobile-search">
+            <i class="ph ph-magnifying-glass text-[#6B6B7B]"></i>
+            <input type="text" placeholder="Search city..." />
+          </div>
+          <button class="mobile-menu-btn" aria-label="Open menu">
+            <i class="ph ph-list text-lg"></i>
+          </button>
+        </header>
 
-  <!-- Ambient Weather Glow -->
-  <div class="hero-weather-glow"></div>
+        <!-- ==================== MOBILE FLOATING BOTTOM NAVBAR ==================== -->
+        <nav class="mobile-bottom-nav">
+          <a href="#" class="bottom-nav-item active">
+            <i class="ph ph-house bottom-nav-icon"></i>
+            <span>Home</span>
+          </a>
+          <a href="#" class="bottom-nav-item">
+            <i class="ph ph-clock bottom-nav-icon"></i>
+            <span>Hourly</span>
+          </a>
+          <a href="#" class="bottom-nav-item">
+            <i class="ph ph-calendar bottom-nav-icon"></i>
+            <span>7-Day</span>
+          </a>
+          <a href="#" class="bottom-nav-item">
+            <i class="ph ph-globe-hemisphere-west bottom-nav-icon"></i>
+            <span>Cities</span>
+          </a>
+          <button class="bottom-nav-item" aria-label="Open menu">
+            <i class="ph ph-list bottom-nav-icon"></i>
+            <span>Menu</span>
+          </button>
+        </nav>
 
-  <!-- Main Hero Card -->
-  <div class="hero-card">
-    
-    <!-- Photo Hint (hover icon for photo) -->
-    <div class="hero-photo-hint">
-      <i class="ph ph-image"></i>
+        <!-- ==================== MOBILE FLOATING SIDEBAR (Bottom Sheet) ==================== -->
+        <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+        <aside class="mobile-sidebar" id="mobileSidebar">
+          <div class="mobile-sidebar-handle"></div>
+          <div class="mobile-sidebar-title">Menu</div>
+
+          <nav class="mobile-sidebar-nav">
+            <a href="#" class="mobile-nav-link active">
+              <i class="ph ph-house"></i>
+              <span>Dashboard</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+              <i class="ph ph-clock"></i>
+              <span>Hourly</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+              <i class="ph ph-calendar"></i>
+              <span>7-Day Forecast</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+              <i class="ph ph-chart-bar"></i>
+              <span>Details</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+              <i class="ph ph-trend-up"></i>
+              <span>History</span>
+            </a>
+
+            <div class="mobile-sidebar-divider"></div>
+
+            <a href="#" class="mobile-nav-link">
+              <i class="ph ph-globe-hemisphere-west"></i>
+              <span>My Cities</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+              <i class="ph ph-scales"></i>
+              <span>Compare</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+              <i class="ph ph-bell"></i>
+              <span>Alerts</span>
+            </a>
+            <a href="#" class="mobile-nav-link">
+              <i class="ph ph-gear"></i>
+              <span>Settings</span>
+            </a>
+
+            <div class="mobile-sidebar-divider"></div>
+
+            <div class="mobile-sidebar-recent">
+              <div class="mobile-recent-title">Recent</div>
+              <a href="#" class="mobile-recent-item">
+                <span>New York</span>
+                <span class="mobile-recent-temp"
+                  >26° <i class="ph ph-sun text-amber-400"></i
+                ></span>
+              </a>
+              <a href="#" class="mobile-recent-item">
+                <span>Tokyo</span>
+                <span class="mobile-recent-temp"
+                  >22° <i class="ph ph-cloud text-slate-400"></i
+                ></span>
+              </a>
+              <a href="#" class="mobile-recent-item">
+                <span>Dubai</span>
+                <span class="mobile-recent-temp"
+                  >38° <i class="ph ph-sun text-amber-400"></i
+                ></span>
+              </a>
+            </div>
+          </nav>
+        </aside>
+
+        <!-- ==================== MAIN CONTENT SECTIONS (EMPTY — FILL LATER) ==================== -->
+        <div class="content-wrapper" style="  ">
+          <!-- ==================== HERO SECTION ==================== -->
+          <section
+            class="hero-section"
+            id="weather-showcase"
+            data-weather="clear"
+          >
+            <!-- Dynamic Background Layer (no images — you add img tags here later) -->
+
+            <!-- Weather Photo Overlay (empty — you fill with <img> later) -->
+            <div class="hero-photo-overlay" id="hero-photo-overlay">
+              <!-- <img src="your-photo.jpg" alt="Weather" /> -->
+            </div>
+
+            <!-- Ambient Weather Glow -->
+            <div class="hero-weather-glow"></div>
+
+            <!-- Main Hero Card -->
+            <div class="hero-card">
+              <!-- Photo Hint (hover icon for photo) -->
+              <div class="hero-photo-hint">
+                <i class="ph ph-image"></i>
+              </div>
+
+              <!-- Sound Badge -->
+              <div class="hero-sound-badge">
+                <div class="sound-wave">
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                </div>
+                <span>Light Breeze</span>
+              </div>
+
+              <!-- Weather Content -->
+              <div class="hero-content">
+                <!-- Left: Icon + Temp -->
+                <div class="hero-left">
+                  <div class="hero-weather-icon" id="hero-weather-icon">
+                    <i class="ph ph-cloud-sun text-[#00D4FF]"></i>
+                  </div>
+                  <div class="hero-temp">
+                    <span class="temp-value">18</span>
+                    <span class="temp-unit">°</span>
+                  </div>
+                  <div class="hero-desc">Partly Cloudy</div>
+                  <div class="hero-feels">Feels like <span>16°</span></div>
+                  <div class="hero-highlow">
+                    <span class="highlow-item">
+                      <i class="ph ph-arrow-up text-[#FFB800]"></i>
+                      <span>22°</span>
+                    </span>
+                    <span class="highlow-item">
+                      <i class="ph ph-arrow-down text-[#00D4FF]"></i>
+                      <span>14°</span>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Right: Meta Details -->
+                <div class="hero-right">
+                  <div class="hero-meta">
+                    <span class="meta-label">Wind</span>
+                    <span class="meta-value">14 km/h NW</span>
+                  </div>
+                  <div class="hero-meta">
+                    <span class="meta-label">Humidity</span>
+                    <span class="meta-value">64%</span>
+                  </div>
+                  <div class="hero-meta">
+                    <span class="meta-label">Pressure</span>
+                    <span class="meta-value">1013 hPa</span>
+                  </div>
+                  <div class="hero-meta">
+                    <span class="meta-label">Visibility</span>
+                    <span class="meta-value">10 km</span>
+                  </div>
+                  <div class="hero-meta">
+                    <span class="meta-label">UV Index</span>
+                    <span class="meta-value"
+                      >4 <span class="meta-sub">Moderate</span></span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- ====== THE SHADOW EFFECT ====== -->
+              <!-- Scattered black blur rising from bottom, cut in half-circle at top -->
+              <div class="hero-shadow-rise"></div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="hero-scroll-hint">
+              <div class="scroll-line"></div>
+            </div>
+          </section>
+          <div class="section-divider"></div>
+          <!-- ==================== HOURLY FORECAST SECTION ==================== -->
+          <section class="content-section hourly-section" id="hourly-forecast">
+            <div class="section-header-row">
+              <h2 class="section-heading">Today</h2>
+              <a href="#" class="section-action-link">
+                <span>24 Hours</span>
+                <i class="ph ph-caret-right"></i>
+              </a>
+            </div>
+
+            <div class="hourly-grid-container">
+              <div class="hourly-grid">
+                <div class="hour-card">
+                  <span class="hour-time">11 PM</span>
+                  <div class="hour-icon-wrap">
+                    <i class="ph ph-moon-stars text-[#7B61FF]"></i>
+                  </div>
+                  <span class="hour-temp">11°</span>
+                  <div class="hour-details">
+                    <span class="hour-detail"
+                      ><i class="ph ph-wind"></i> 3</span
+                    >
+                    <span class="hour-detail"
+                      ><i class="ph ph-drop"></i> 0%</span
+                    >
+                    <span class="hour-detail"
+                      ><i class="ph ph-moon"></i> 0</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==================== 7-DAY FORECAST SECTION ==================== -->
+          <section class="content-section forecast-section" id="daily-forecast">
+            <div class="section-header-row">
+              <h2 class="section-heading">7-Day Forecast</h2>
+              <a href="#" class="section-action-link">
+                <span>Full Report</span>
+                <i class="ph ph-caret-right"></i>
+              </a>
+            </div>
+
+            <div class="forecast-card glass-card">
+              <div class="forecast-row">
+                <span class="forecast-day">Today</span>
+                <div class="forecast-icon-wrap">
+                  <i class="ph ph-cloud-sun text-[#FFB800]"></i>
+                </div>
+                <span class="forecast-condition">Partly Cloudy</span>
+                <div class="forecast-bar-wrap">
+                  <div class="forecast-bar">
+                    <div
+                      class="forecast-bar-fill"
+                      style="left: 20%; width: 60%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="forecast-temps">
+                  <span class="forecast-high">22°</span>
+                  <span class="forecast-low">14°</span>
+                </div>
+              </div>
+
+              <div class="forecast-row">
+                <span class="forecast-day">Tue</span>
+                <div class="forecast-icon-wrap">
+                  <i class="ph ph-cloud-rain text-[#00D4FF]"></i>
+                </div>
+                <span class="forecast-condition">Rain</span>
+                <div class="forecast-bar-wrap">
+                  <div class="forecast-bar">
+                    <div
+                      class="forecast-bar-fill"
+                      style="left: 15%; width: 55%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="forecast-temps">
+                  <span class="forecast-high">19°</span>
+                  <span class="forecast-low">12°</span>
+                </div>
+              </div>
+
+              <div class="forecast-row">
+                <span class="forecast-day">Wed</span>
+                <div class="forecast-icon-wrap">
+                  <i class="ph ph-cloud text-[#8B9DC3]"></i>
+                </div>
+                <span class="forecast-condition">Cloudy</span>
+                <div class="forecast-bar-wrap">
+                  <div class="forecast-bar">
+                    <div
+                      class="forecast-bar-fill"
+                      style="left: 25%; width: 45%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="forecast-temps">
+                  <span class="forecast-high">20°</span>
+                  <span class="forecast-low">13°</span>
+                </div>
+              </div>
+
+              <div class="forecast-row">
+                <span class="forecast-day">Thu</span>
+                <div class="forecast-icon-wrap">
+                  <i class="ph ph-cloud-sun text-[#FFB800]"></i>
+                </div>
+                <span class="forecast-condition">Partly Cloudy</span>
+                <div class="forecast-bar-wrap">
+                  <div class="forecast-bar">
+                    <div
+                      class="forecast-bar-fill"
+                      style="left: 20%; width: 60%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="forecast-temps">
+                  <span class="forecast-high">21°</span>
+                  <span class="forecast-low">14°</span>
+                </div>
+              </div>
+
+              <div class="forecast-row">
+                <span class="forecast-day">Fri</span>
+                <div class="forecast-icon-wrap">
+                  <i class="ph ph-sun text-[#FFB800]"></i>
+                </div>
+                <span class="forecast-condition">Sunny</span>
+                <div class="forecast-bar-wrap">
+                  <div class="forecast-bar">
+                    <div
+                      class="forecast-bar-fill"
+                      style="left: 30%; width: 65%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="forecast-temps">
+                  <span class="forecast-high">24°</span>
+                  <span class="forecast-low">15°</span>
+                </div>
+              </div>
+
+              <div class="forecast-row">
+                <span class="forecast-day">Sat</span>
+                <div class="forecast-icon-wrap">
+                  <i class="ph ph-sun text-[#FFB800]"></i>
+                </div>
+                <span class="forecast-condition">Clear</span>
+                <div class="forecast-bar-wrap">
+                  <div class="forecast-bar">
+                    <div
+                      class="forecast-bar-fill"
+                      style="left: 35%; width: 60%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="forecast-temps">
+                  <span class="forecast-high">25°</span>
+                  <span class="forecast-low">16°</span>
+                </div>
+              </div>
+
+              <div class="forecast-row">
+                <span class="forecast-day">Sun</span>
+                <div class="forecast-icon-wrap">
+                  <i class="ph ph-cloud-sun text-[#FFB800]"></i>
+                </div>
+                <span class="forecast-condition">Partly Cloudy</span>
+                <div class="forecast-bar-wrap">
+                  <div class="forecast-bar">
+                    <div
+                      class="forecast-bar-fill"
+                      style="left: 25%; width: 55%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="forecast-temps">
+                  <span class="forecast-high">23°</span>
+                  <span class="forecast-low">15°</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- DETAILS GRID SECTION -->
+          <section class="content-section" id="weather-details">
+            <!-- TODO: Humidity, Wind, Pressure, UV, Visibility, Precipitation cards -->
+          </section>
+
+          <!-- AIR QUALITY SECTION -->
+          <section class="content-section" id="air-quality">
+            <!-- TODO: AQI ring, pills, status -->
+          </section>
+
+          <!-- ==================== SUNRISE / SUNSET SECTION ==================== -->
+          <section class="content-section" id="sun-cycle">
+            <div class="section-header-row">
+              <h2 class="section-heading">Sun Cycle</h2>
+              <span class="section-action-link">Daylight 15h 14m</span>
+            </div>
+
+            <div class="glass-card p-6 sm:p-8 relative overflow-hidden">
+              <!-- Sun Arc Visual -->
+              <div class="relative w-full h-40 sm:h-48 mb-6">
+                <!-- Arc Track -->
+                <div class="absolute inset-x-0 bottom-0 h-full">
+                  <svg
+                    class="w-full h-full"
+                    viewBox="0 0 400 150"
+                    preserveAspectRatio="none"
+                  >
+                    <!-- Background arc (dotted) -->
+                    <path
+                      d="M 20 140 Q 200 -20 380 140"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.06)"
+                      stroke-width="2"
+                      stroke-dasharray="6 6"
+                    />
+                    <!-- Active arc (gradient) -->
+                    <path
+                      d="M 20 140 Q 200 -20 380 140"
+                      fill="none"
+                      stroke="url(#sunGradient)"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      class="sun-arc-path"
+                    />
+                    <!-- Gradient definition -->
+                    <defs>
+                      <linearGradient
+                        id="sunGradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
+                        <stop offset="0%" stop-color="#FFB800" />
+                        <stop offset="50%" stop-color="#00D4FF" />
+                        <stop offset="100%" stop-color="#7B61FF" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                <!-- Sun Position Dot -->
+                <div
+                  class="absolute w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#FFB800] shadow-[0_0_20px_rgba(255,184,0,0.5)] border-2 border-white/20 z-10 sun-position-dot"
+                  style="left: 60%; bottom: 65%"
+                ></div>
+
+                <!-- Horizon Line -->
+                <div
+                  class="absolute inset-x-0 bottom-0 h-px bg-white/[0.08]"
+                ></div>
+
+                <!-- Horizon Glow -->
+                <div
+                  class="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#FFB800]/5 to-transparent"
+                ></div>
+              </div>
+
+              <!-- Times Row -->
+              <div class="flex items-center justify-between relative z-10">
+                <!-- Sunrise -->
+                <div class="flex items-center gap-3 sm:gap-4">
+                  <div
+                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#FFB800]/10 border border-[#FFB800]/20 flex items-center justify-center text-xl sm:text-2xl"
+                  >
+                    <i class="ph ph-sun-horizon text-[#FFB800]"></i>
+                  </div>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-[10px] sm:text-xs font-semibold text-[#6B6B7B] uppercase tracking-widest"
+                      >Sunrise</span
+                    >
+                    <span class="text-lg sm:text-xl font-semibold text-white"
+                      >5:42 AM</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Progress Pill -->
+                <div class="hidden sm:flex flex-col items-center gap-2 px-6">
+                  <div
+                    class="h-1.5 w-32 md:w-48 rounded-full bg-[#1A1A24] overflow-hidden"
+                  >
+                    <div
+                      class="h-full rounded-full bg-gradient-to-r from-[#FFB800] via-[#00D4FF] to-[#7B61FF] sun-progress-bar"
+                      style="width: 60%"
+                    ></div>
+                  </div>
+                  <span class="text-[10px] text-[#6B6B7B]">Sun is high</span>
+                </div>
+
+                <!-- Sunset -->
+                <div class="flex items-center gap-3 sm:gap-4">
+                  <div class="flex flex-col items-end">
+                    <span
+                      class="text-[10px] sm:text-xs font-semibold text-[#6B6B7B] uppercase tracking-widest"
+                      >Sunset</span
+                    >
+                    <span class="text-lg sm:text-xl font-semibold text-white"
+                      >8:56 PM</span
+                    >
+                  </div>
+                  <div
+                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#7B61FF]/10 border border-[#7B61FF]/20 flex items-center justify-center text-xl sm:text-2xl"
+                  >
+                    <i class="ph ph-moon-stars text-[#7B61FF]"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Progress Bar (visible only on small screens) -->
+              <div class="flex sm:hidden flex-col gap-1.5 mt-5">
+                <div
+                  class="h-1 w-full rounded-full bg-[#1A1A24] overflow-hidden"
+                >
+                  <div
+                    class="h-full rounded-full bg-gradient-to-r from-[#FFB800] via-[#00D4FF] to-[#7B61FF]"
+                    style="width: 60%"
+                  ></div>
+                </div>
+                <span class="text-[10px] text-[#6B6B7B] text-center"
+                  >Sun is high</span
+                >
+              </div>
+            </div>
+          </section>
+          <!-- RECENT SEARCHES SECTION -->
+          <section class="content-section" id="recent-searches">
+            <!-- TODO: Recent city pills -->
+          </section>
+        </div>
+      </main>
     </div>
 
-    <!-- Sound Badge -->
-    <div class="hero-sound-badge">
-      <div class="sound-wave">
-        <div class="sound-wave-bar"></div>
-        <div class="sound-wave-bar"></div>
-        <div class="sound-wave-bar"></div>
-        <div class="sound-wave-bar"></div>
-      </div>
-      <span>Light Breeze</span>
-    </div>
-
-    <!-- Weather Content -->
-    <div class="hero-content">
-      
-      <!-- Left: Icon + Temp -->
-      <div class="hero-left">
-        <div class="hero-weather-icon" id="hero-weather-icon">
-          <i class="ph ph-cloud-sun text-[#00D4FF]"></i>
-        </div>
-        <div class="hero-temp">
-          <span class="temp-value">18</span>
-          <span class="temp-unit">°</span>
-        </div>
-        <div class="hero-desc">Partly Cloudy</div>
-        <div class="hero-feels">Feels like <span>16°</span></div>
-        <div class="hero-highlow">
-          <span class="highlow-item">
-            <i class="ph ph-arrow-up text-[#FFB800]"></i>
-            <span>22°</span>
-          </span>
-          <span class="highlow-item">
-            <i class="ph ph-arrow-down text-[#00D4FF]"></i>
-            <span>14°</span>
-          </span>
-        </div>
-      </div>
-
-      <!-- Right: Meta Details -->
-      <div class="hero-right">
-        <div class="hero-meta">
-          <span class="meta-label">Wind</span>
-          <span class="meta-value">14 km/h NW</span>
-        </div>
-        <div class="hero-meta">
-          <span class="meta-label">Humidity</span>
-          <span class="meta-value">64%</span>
-        </div>
-        <div class="hero-meta">
-          <span class="meta-label">Pressure</span>
-          <span class="meta-value">1013 hPa</span>
-        </div>
-        <div class="hero-meta">
-          <span class="meta-label">Visibility</span>
-          <span class="meta-value">10 km</span>
-        </div>
-        <div class="hero-meta">
-          <span class="meta-label">UV Index</span>
-          <span class="meta-value">4 <span class="meta-sub">Moderate</span></span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ====== THE SHADOW EFFECT ====== -->
-    <!-- Scattered black blur rising from bottom, cut in half-circle at top -->
-    <div class="hero-shadow-rise"></div>
-
-  </div>
-
-  <!-- Scroll Indicator -->
-  <div class="hero-scroll-hint">
-    <div class="scroll-line"></div>
-  </div>
-
-</section>
-<div class="section-divider"></div>
-<!-- ==================== HOURLY FORECAST SECTION ==================== -->
-<section class="content-section hourly-section" id="hourly-forecast">
-  
-  <div class="section-header-row">
-    <h2 class="section-heading">Today</h2>
-    <a href="#" class="section-action-link">
-      <span>24 Hours</span>
-      <i class="ph ph-caret-right"></i>
-    </a>
-  </div>
-
-  <div class="hourly-grid-container">
-    <div class="hourly-grid">
-      
-      <div class="hour-card active">
-        <span class="hour-time">Now</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-cloud-sun text-[#00D4FF]"></i>
-        </div>
-        <span class="hour-temp">18°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 14</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 20%</span>
-          <span class="hour-detail"><i class="ph ph-sun"></i> 4</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">1 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-cloud text-[#8B9DC3]"></i>
-        </div>
-        <span class="hour-temp">19°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 12</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 10%</span>
-          <span class="hour-detail"><i class="ph ph-sun"></i> 5</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">2 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-cloud-rain text-[#00D4FF]"></i>
-        </div>
-        <span class="hour-temp">17°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 16</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 80%</span>
-          <span class="hour-detail"><i class="ph ph-sun"></i> 2</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">3 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-cloud-rain text-[#00D4FF]"></i>
-        </div>
-        <span class="hour-temp">16°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 18</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 90%</span>
-          <span class="hour-detail"><i class="ph ph-sun"></i> 1</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">4 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-cloud text-[#8B9DC3]"></i>
-        </div>
-        <span class="hour-temp">16°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 15</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 30%</span>
-          <span class="hour-detail"><i class="ph ph-sun"></i> 3</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">5 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-moon text-[#7B61FF]"></i>
-        </div>
-        <span class="hour-temp">15°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 10</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 5%</span>
-          <span class="hour-detail"><i class="ph ph-moon"></i> 0</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">6 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-moon text-[#7B61FF]"></i>
-        </div>
-        <span class="hour-temp">14°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 8</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 0%</span>
-          <span class="hour-detail"><i class="ph ph-moon"></i> 0</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">7 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-moon text-[#7B61FF]"></i>
-        </div>
-        <span class="hour-temp">13°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 6</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 0%</span>
-          <span class="hour-detail"><i class="ph ph-moon"></i> 0</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">8 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-moon-stars text-[#7B61FF]"></i>
-        </div>
-        <span class="hour-temp">12°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 5</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 0%</span>
-          <span class="hour-detail"><i class="ph ph-moon"></i> 0</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">9 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-moon-stars text-[#7B61FF]"></i>
-        </div>
-        <span class="hour-temp">12°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 4</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 0%</span>
-          <span class="hour-detail"><i class="ph ph-moon"></i> 0</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">10 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-moon-stars text-[#7B61FF]"></i>
-        </div>
-        <span class="hour-temp">11°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 4</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 0%</span>
-          <span class="hour-detail"><i class="ph ph-moon"></i> 0</span>
-        </div>
-      </div>
-
-      <div class="hour-card">
-        <span class="hour-time">11 PM</span>
-        <div class="hour-icon-wrap">
-          <i class="ph ph-moon-stars text-[#7B61FF]"></i>
-        </div>
-        <span class="hour-temp">11°</span>
-        <div class="hour-details">
-          <span class="hour-detail"><i class="ph ph-wind"></i> 3</span>
-          <span class="hour-detail"><i class="ph ph-drop"></i> 0%</span>
-          <span class="hour-detail"><i class="ph ph-moon"></i> 0</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</section>
-
-       <!-- ==================== 7-DAY FORECAST SECTION ==================== -->
-<section class="content-section forecast-section" id="daily-forecast">
-
-  <div class="section-header-row">
-    <h2 class="section-heading">7-Day Forecast</h2>
-    <a href="#" class="section-action-link">
-      <span>Full Report</span>
-      <i class="ph ph-caret-right"></i>
-    </a>
-  </div>
-
-  <div class="forecast-card glass-card">
-    
-    <div class="forecast-row">
-      <span class="forecast-day">Today</span>
-      <div class="forecast-icon-wrap">
-        <i class="ph ph-cloud-sun text-[#FFB800]"></i>
-      </div>
-      <span class="forecast-condition">Partly Cloudy</span>
-      <div class="forecast-bar-wrap">
-        <div class="forecast-bar">
-          <div class="forecast-bar-fill" style="left: 20%; width: 60%;"></div>
-        </div>
-      </div>
-      <div class="forecast-temps">
-        <span class="forecast-high">22°</span>
-        <span class="forecast-low">14°</span>
-      </div>
-    </div>
-
-    <div class="forecast-row">
-      <span class="forecast-day">Tue</span>
-      <div class="forecast-icon-wrap">
-        <i class="ph ph-cloud-rain text-[#00D4FF]"></i>
-      </div>
-      <span class="forecast-condition">Rain</span>
-      <div class="forecast-bar-wrap">
-        <div class="forecast-bar">
-          <div class="forecast-bar-fill" style="left: 15%; width: 55%;"></div>
-        </div>
-      </div>
-      <div class="forecast-temps">
-        <span class="forecast-high">19°</span>
-        <span class="forecast-low">12°</span>
-      </div>
-    </div>
-
-    <div class="forecast-row">
-      <span class="forecast-day">Wed</span>
-      <div class="forecast-icon-wrap">
-        <i class="ph ph-cloud text-[#8B9DC3]"></i>
-      </div>
-      <span class="forecast-condition">Cloudy</span>
-      <div class="forecast-bar-wrap">
-        <div class="forecast-bar">
-          <div class="forecast-bar-fill" style="left: 25%; width: 45%;"></div>
-        </div>
-      </div>
-      <div class="forecast-temps">
-        <span class="forecast-high">20°</span>
-        <span class="forecast-low">13°</span>
-      </div>
-    </div>
-
-    <div class="forecast-row">
-      <span class="forecast-day">Thu</span>
-      <div class="forecast-icon-wrap">
-        <i class="ph ph-cloud-sun text-[#FFB800]"></i>
-      </div>
-      <span class="forecast-condition">Partly Cloudy</span>
-      <div class="forecast-bar-wrap">
-        <div class="forecast-bar">
-          <div class="forecast-bar-fill" style="left: 20%; width: 60%;"></div>
-        </div>
-      </div>
-      <div class="forecast-temps">
-        <span class="forecast-high">21°</span>
-        <span class="forecast-low">14°</span>
-      </div>
-    </div>
-
-    <div class="forecast-row">
-      <span class="forecast-day">Fri</span>
-      <div class="forecast-icon-wrap">
-        <i class="ph ph-sun text-[#FFB800]"></i>
-      </div>
-      <span class="forecast-condition">Sunny</span>
-      <div class="forecast-bar-wrap">
-        <div class="forecast-bar">
-          <div class="forecast-bar-fill" style="left: 30%; width: 65%;"></div>
-        </div>
-      </div>
-      <div class="forecast-temps">
-        <span class="forecast-high">24°</span>
-        <span class="forecast-low">15°</span>
-      </div>
-    </div>
-
-    <div class="forecast-row">
-      <span class="forecast-day">Sat</span>
-      <div class="forecast-icon-wrap">
-        <i class="ph ph-sun text-[#FFB800]"></i>
-      </div>
-      <span class="forecast-condition">Clear</span>
-      <div class="forecast-bar-wrap">
-        <div class="forecast-bar">
-          <div class="forecast-bar-fill" style="left: 35%; width: 60%;"></div>
-        </div>
-      </div>
-      <div class="forecast-temps">
-        <span class="forecast-high">25°</span>
-        <span class="forecast-low">16°</span>
-      </div>
-    </div>
-
-    <div class="forecast-row">
-      <span class="forecast-day">Sun</span>
-      <div class="forecast-icon-wrap">
-        <i class="ph ph-cloud-sun text-[#FFB800]"></i>
-      </div>
-      <span class="forecast-condition">Partly Cloudy</span>
-      <div class="forecast-bar-wrap">
-        <div class="forecast-bar">
-          <div class="forecast-bar-fill" style="left: 25%; width: 55%;"></div>
-        </div>
-      </div>
-      <div class="forecast-temps">
-        <span class="forecast-high">23°</span>
-        <span class="forecast-low">15°</span>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-        <!-- DETAILS GRID SECTION -->
-        <section class="content-section" id="weather-details">
-          <!-- TODO: Humidity, Wind, Pressure, UV, Visibility, Precipitation cards -->
-        </section>
-
-        <!-- AIR QUALITY SECTION -->
-        <section class="content-section" id="air-quality">
-          <!-- TODO: AQI ring, pills, status -->
-        </section>
-
-       <!-- ==================== SUNRISE / SUNSET SECTION ==================== -->
-<section class="content-section" id="sun-cycle">
-  
-  <div class="section-header-row">
-    <h2 class="section-heading">Sun Cycle</h2>
-    <span class="section-action-link">Daylight 15h 14m</span>
-  </div>
-
-  <div class="glass-card p-6 sm:p-8 relative overflow-hidden">
-    
-    <!-- Sun Arc Visual -->
-    <div class="relative w-full h-40 sm:h-48 mb-6">
-      
-      <!-- Arc Track -->
-      <div class="absolute inset-x-0 bottom-0 h-full">
-        <svg class="w-full h-full" viewBox="0 0 400 150" preserveAspectRatio="none">
-          <!-- Background arc (dotted) -->
-          <path 
-            d="M 20 140 Q 200 -20 380 140" 
-            fill="none" 
-            stroke="rgba(255,255,255,0.06)" 
-            stroke-width="2" 
-            stroke-dasharray="6 6"
-          />
-          <!-- Active arc (gradient) -->
-          <path 
-            d="M 20 140 Q 200 -20 380 140" 
-            fill="none" 
-            stroke="url(#sunGradient)" 
-            stroke-width="3"
-            stroke-linecap="round"
-            class="sun-arc-path"
-          />
-          <!-- Gradient definition -->
-          <defs>
-            <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#FFB800" />
-              <stop offset="50%" stop-color="#00D4FF" />
-              <stop offset="100%" stop-color="#7B61FF" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      <!-- Sun Position Dot -->
-      <div 
-        class="absolute w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#FFB800] shadow-[0_0_20px_rgba(255,184,0,0.5)] border-2 border-white/20 z-10 sun-position-dot"
-        style="left: 60%; bottom: 65%;"
-      ></div>
-
-      <!-- Horizon Line -->
-      <div class="absolute inset-x-0 bottom-0 h-px bg-white/[0.08]"></div>
-      
-      <!-- Horizon Glow -->
-      <div class="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-[#FFB800]/5 to-transparent"></div>
-    </div>
-
-    <!-- Times Row -->
-    <div class="flex items-center justify-between relative z-10">
-      
-      <!-- Sunrise -->
-      <div class="flex items-center gap-3 sm:gap-4">
-        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#FFB800]/10 border border-[#FFB800]/20 flex items-center justify-center text-xl sm:text-2xl">
-          <i class="ph ph-sun-horizon text-[#FFB800]"></i>
-        </div>
-        <div class="flex flex-col">
-          <span class="text-[10px] sm:text-xs font-semibold text-[#6B6B7B] uppercase tracking-widest">Sunrise</span>
-          <span class="text-lg sm:text-xl font-semibold text-white">5:42 AM</span>
-        </div>
-      </div>
-
-      <!-- Progress Pill -->
-      <div class="hidden sm:flex flex-col items-center gap-2 px-6">
-        <div class="h-1.5 w-32 md:w-48 rounded-full bg-[#1A1A24] overflow-hidden">
-          <div class="h-full rounded-full bg-gradient-to-r from-[#FFB800] via-[#00D4FF] to-[#7B61FF] sun-progress-bar" style="width: 60%;"></div>
-        </div>
-        <span class="text-[10px] text-[#6B6B7B]">Sun is high</span>
-      </div>
-
-      <!-- Sunset -->
-      <div class="flex items-center gap-3 sm:gap-4">
-        <div class="flex flex-col items-end">
-          <span class="text-[10px] sm:text-xs font-semibold text-[#6B6B7B] uppercase tracking-widest">Sunset</span>
-          <span class="text-lg sm:text-xl font-semibold text-white">8:56 PM</span>
-        </div>
-        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#7B61FF]/10 border border-[#7B61FF]/20 flex items-center justify-center text-xl sm:text-2xl">
-          <i class="ph ph-moon-stars text-[#7B61FF]"></i>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Mobile Progress Bar (visible only on small screens) -->
-    <div class="flex sm:hidden flex-col gap-1.5 mt-5">
-      <div class="h-1 w-full rounded-full bg-[#1A1A24] overflow-hidden">
-        <div class="h-full rounded-full bg-gradient-to-r from-[#FFB800] via-[#00D4FF] to-[#7B61FF]" style="width: 60%;"></div>
-      </div>
-      <span class="text-[10px] text-[#6B6B7B] text-center">Sun is high</span>
-    </div>
-
-  </div>
-
-</section>
-        <!-- RECENT SEARCHES SECTION -->
-        <section class="content-section" id="recent-searches">
-          <!-- TODO: Recent city pills -->
-        </section>
-
-      </div>
-
-    </main>
-
-  </div>
-
-  <!-- Hidden audio element for ambient sounds -->
-  <audio id="ambient-audio" loop preload="auto" class="hidden"></audio>
-
-</body>
+    <!-- Hidden audio element for ambient sounds -->
+    <audio id="ambient-audio" loop preload="auto" class="hidden"></audio>
+  </body>
 </html>

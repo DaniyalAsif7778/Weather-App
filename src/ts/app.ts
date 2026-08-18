@@ -1,4 +1,5 @@
 import {fetchData} from "./fetch.js"
+import {injectHtmlInIndex} from "./injectHtml.js"
 async function app() {
   let weather;
   const cityName: string = "";
@@ -20,14 +21,18 @@ console.log(inputForm);
       if (!wheatherData) {
         throw console.error("something went wrong")
       }
-      inputForm.hidden = true
         weather = wheatherData;
+
+      inputForm.hidden = true
         localStorage.setItem("weather",JSON.stringify(weather))
-        console.log(weather);
+         injectHtmlInIndex(weather)
+
         
       }
     }, doneTypingInterval);
   });
+   
+
 }
 
 app();
