@@ -1137,8 +1137,7 @@ img {
   border-radius: var(--radius-md);
   font-size: var(--font-size-md);
   color: var(--color-text-tertiary);
-  cursor: pointer;
-  transition: all var(--transition-base);
+   transition: all var(--transition-base);
   display: flex;
   align-items: center;
   gap: var(--space-3);

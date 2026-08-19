@@ -1,7 +1,7 @@
  
 async function getLocationApi(location:string) {
   try {
-    const responseWeatherData = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/?key=""`);
+    const responseWeatherData = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/?key=UMW8MZE9GWT2SAM6UX35295KC`);
  
     const jsonData = await responseWeatherData.json();
     const weather = jsonData;

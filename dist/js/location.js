@@ -1,0 +1,27 @@
+async function getLocationApi(location) {
+    try {
+        const responseWeatherData = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/?key=`);
+        const jsonData = await responseWeatherData.json();
+        const weather = jsonData;
+        return { weather };
+    }
+    catch (error) {
+        console.log(`${error}`);
+    }
+}
+async function getUserLocation(location) {
+    let wheatherData;
+    try {
+        if (!(location)) {
+            throw console.error(" location is required");
+        }
+        const { weather } = await getLocationApi(location);
+        wheatherData = weather;
+    }
+    catch (error) {
+        console.log(error);
+    }
+    return { wheatherData };
+}
+export { getUserLocation };
+//# sourceMappingURL=location.js.map
