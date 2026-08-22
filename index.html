@@ -24,11 +24,7 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
-    <!-- Tailwind CSS v4 (via CDN for preview; use npm build for production) -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="./src/ts/app.ts" type="module"></script>
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="/src/css/style.css" />
   </head>
   <body class="bg-[#0A0A0F] text-white font-sans antialiased overflow-x-hidden">
     <!-- ==================== CANVAS BACKGROUND ==================== -->
@@ -44,7 +40,6 @@
           <input
             type="text"
             name="city"
-            value="Islamabad"
             placeholder="Enter city name..."
             autocomplete="off"
             id="cityname_input"
@@ -54,11 +49,14 @@
       <!-- ============================================================ -->
       <!-- DESKTOP SIDEBAR (Left Fixed) — Hidden on mobile/tablet       -->
       <!-- ============================================================ -->
-      <aside class="desktop-sidebar">
+      <aside class="desktop-sidebar" id="desktop-sidebar">
         <!-- Logo -->
         <div class="sidebar-logo">
           <i class="ph ph-cloud-snow text-2xl text-[#00D4FF]"></i>
-          <span>Aura Weather</span>
+          <span class="sidebar-label">Aura Weather</span>
+          <button id="sidebar-toggle" class="sidebar-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true">
+            <i class="ph ph-caret-left"></i>
+          </button>
         </div>
 
         <!-- Search -->
@@ -70,29 +68,29 @@
         <!-- Navigation -->
         <nav class="sidebar-nav">
           <div class="nav-section-title">Navigation</div>
-          <a href="#" class="nav-link active">
+          <a href="/" class="nav-link active">
             <i class="ph ph-house nav-icon"></i>
             <span>Dashboard</span>
           </a>
-          <a href="#" class="nav-link">
+          <a href="/forecast.html" class="nav-link">
             <i class="ph ph-clock nav-icon"></i>
             <span>Hourly</span>
           </a>
-          <a href="#" class="nav-link">
+          <a href="/seven-day.html" class="nav-link">
             <i class="ph ph-calendar nav-icon"></i>
             <span>7-Day</span>
           </a>
-          <a href="#" class="nav-link">
+          <a href="/details.html" class="nav-link">
             <i class="ph ph-chart-bar nav-icon"></i>
             <span>Details</span>
           </a>
-          <a href="#" class="nav-link">
+          <a href="/cities.html" class="nav-link">
             <i class="ph ph-trend-up nav-icon"></i>
             <span>History</span>
           </a>
 
           <div class="nav-section-title mt-4">Tools</div>
-          <a href="#" class="nav-link">
+          <a href="/cities.html" class="nav-link">
             <i class="ph ph-globe-hemisphere-west nav-icon"></i>
             <span>My Cities</span>
           </a>
@@ -104,7 +102,7 @@
             <i class="ph ph-bell nav-icon"></i>
             <span>Alerts</span>
           </a>
-          <a href="#" class="nav-link">
+          <a href="/settings.html" class="nav-link">
             <i class="ph ph-gear nav-icon"></i>
             <span>Settings</span>
           </a>
@@ -148,7 +146,7 @@
         <header class="desktop-navbar">
           <div class="navbar-location">
             <i class="ph ph-map-pin text-[#00D4FF]"></i>
-            <span>London, <strong>United Kingdom</strong></span>
+            <span id="navbar-city-name" aria-live="polite">Search for a city</span>
           </div>
           <div class="navbar-actions">
             <button class="nav-btn" aria-label="Notifications">
@@ -163,6 +161,7 @@
 
         <!-- ==================== MOBILE FLOATING TOP NAVBAR ==================== -->
         <header class="mobile-navbar">
+          <span id="mobile-city-name" class="max-w-24 truncate text-xs text-cyan" aria-live="polite"></span>
           <div class="mobile-search">
             <i class="ph ph-magnifying-glass text-[#6B6B7B]"></i>
             <input type="text" placeholder="Search city..." />
@@ -174,19 +173,19 @@
 
         <!-- ==================== MOBILE FLOATING BOTTOM NAVBAR ==================== -->
         <nav class="mobile-bottom-nav">
-          <a href="#" class="bottom-nav-item active">
+          <a href="/" class="bottom-nav-item active">
             <i class="ph ph-house bottom-nav-icon"></i>
             <span>Home</span>
           </a>
-          <a href="#" class="bottom-nav-item">
+          <a href="/forecast.html" class="bottom-nav-item">
             <i class="ph ph-clock bottom-nav-icon"></i>
             <span>Hourly</span>
           </a>
-          <a href="#" class="bottom-nav-item">
+          <a href="/seven-day.html" class="bottom-nav-item">
             <i class="ph ph-calendar bottom-nav-icon"></i>
             <span>7-Day</span>
           </a>
-          <a href="#" class="bottom-nav-item">
+          <a href="/cities.html" class="bottom-nav-item">
             <i class="ph ph-globe-hemisphere-west bottom-nav-icon"></i>
             <span>Cities</span>
           </a>
@@ -203,44 +202,44 @@
           <div class="mobile-sidebar-title">Menu</div>
 
           <nav class="mobile-sidebar-nav">
-            <a href="#" class="mobile-nav-link active">
+            <a href="/" class="mobile-nav-link active">
               <i class="ph ph-house"></i>
               <span>Dashboard</span>
             </a>
-            <a href="#" class="mobile-nav-link">
+            <a href="/forecast.html" class="mobile-nav-link">
               <i class="ph ph-clock"></i>
               <span>Hourly</span>
             </a>
-            <a href="#" class="mobile-nav-link">
+            <a href="/seven-day.html" class="mobile-nav-link">
               <i class="ph ph-calendar"></i>
               <span>7-Day Forecast</span>
             </a>
-            <a href="#" class="mobile-nav-link">
+            <a href="/details.html" class="mobile-nav-link">
               <i class="ph ph-chart-bar"></i>
               <span>Details</span>
             </a>
-            <a href="#" class="mobile-nav-link">
+            <a href="/cities.html" class="mobile-nav-link">
               <i class="ph ph-trend-up"></i>
               <span>History</span>
             </a>
 
             <div class="mobile-sidebar-divider"></div>
 
-            <a href="#" class="mobile-nav-link">
+            <a href="/cities.html" class="mobile-nav-link">
               <i class="ph ph-globe-hemisphere-west"></i>
               <span>My Cities</span>
             </a>
             <a href="#" class="mobile-nav-link">
-              <i class="ph ph-scales"></i>
-              <span>Compare</span>
+            <i class="ph ph-scales"></i>
+            <span>Compare</span>
             </a>
             <a href="#" class="mobile-nav-link">
               <i class="ph ph-bell"></i>
               <span>Alerts</span>
             </a>
-            <a href="#" class="mobile-nav-link">
-              <i class="ph ph-gear"></i>
-              <span>Settings</span>
+            <a href="/settings.html" class="mobile-nav-link">
+            <i class="ph ph-gear"></i>
+            <span>Settings</span>
             </a>
 
             <div class="mobile-sidebar-divider"></div>
@@ -326,7 +325,7 @@
           <section class="content-section hourly-section" id="hourly-forecast">
             <div class="section-header-row">
               <h2 class="section-heading">Today</h2>
-              <a href="#" class="section-action-link">
+              <a href="/forecast.html" class="section-action-link">
                 <span>24 Hours</span>
                 <i class="ph ph-caret-right"></i>
               </a>
@@ -523,7 +522,7 @@
           <section class="content-section" id="sun-cycle">
             <div class="section-header-row">
               <h2 class="section-heading">Sun Cycle</h2>
-              <span class="section-action-link">Daylight 15h 14m</span>
+              <span class="section-action-link" id="sun-cycle-daylight">Daylight</span>
             </div>
 
             <div class="glass-card p-6 sm:p-8 relative overflow-hidden">
@@ -572,6 +571,7 @@
 
                 <!-- Sun Position Dot -->
                 <div
+                  id="sun-position"
                   class="absolute w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#FFB800] shadow-[0_0_20px_rgba(255,184,0,0.5)] border-2 border-white/20 z-10 sun-position-dot"
                   style="left: 60%; bottom: 65%"
                 ></div>
@@ -601,7 +601,7 @@
                       class="text-[10px] sm:text-xs font-semibold text-[#6B6B7B] uppercase tracking-widest"
                       >Sunrise</span
                     >
-                    <span class="text-lg sm:text-xl font-semibold text-white"
+                    <span id="sunrise-time" class="text-lg sm:text-xl font-semibold text-white"
                       >5:42 AM</span
                     >
                   </div>
@@ -612,12 +612,12 @@
                   <div
                     class="h-1.5 w-32 md:w-48 rounded-full bg-[#1A1A24] overflow-hidden"
                   >
-                    <div
+                    <div id="sun-progress"
                       class="h-full rounded-full bg-gradient-to-r from-[#FFB800] via-[#00D4FF] to-[#7B61FF] sun-progress-bar"
                       style="width: 60%"
                     ></div>
                   </div>
-                  <span class="text-[10px] text-[#6B6B7B]">Sun is high</span>
+                  <span class="text-[10px] text-[#6B6B7B] sun-cycle-status">Sun cycle loading</span>
                 </div>
 
                 <!-- Sunset -->
@@ -627,11 +627,11 @@
                       class="text-[10px] sm:text-xs font-semibold text-[#6B6B7B] uppercase tracking-widest"
                       >Sunset</span
                     >
-                    <span class="text-lg sm:text-xl font-semibold text-white"
+                    <span id="sunset-time" class="text-lg sm:text-xl font-semibold text-white"
                       >8:56 PM</span
                     >
                   </div>
-                  <div
+                  <div id="sun-progress-mobile"
                     class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#7B61FF]/10 border border-[#7B61FF]/20 flex items-center justify-center text-xl sm:text-2xl"
                   >
                     <i class="ph ph-moon-stars text-[#7B61FF]"></i>
@@ -649,15 +649,16 @@
                     style="width: 60%"
                   ></div>
                 </div>
-                <span class="text-[10px] text-[#6B6B7B] text-center"
-                  >Sun is high</span
+                <span class="text-[10px] text-[#6B6B7B] text-center sun-cycle-status"
+                  >Sun cycle loading</span
                 >
               </div>
             </div>
           </section>
           <!-- RECENT SEARCHES SECTION -->
           <section class="content-section" id="recent-searches">
-            <!-- TODO: Recent city pills -->
+            <div class="section-header-row"><h2 class="section-heading">Recent searches</h2></div>
+            <div id="recent-search-list" class="recent-search-list"></div>
           </section>
         </div>
       </main>

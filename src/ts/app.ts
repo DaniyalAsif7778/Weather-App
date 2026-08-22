@@ -1,40 +1,54 @@
-import {fetchData} from "./fetch.js"
-import {injectHtmlInIndex} from "./injectHtml.js"
-async function app() {
-  let weather;
-  const cityName: string = "";
-  const input = document.getElementById("cityname_input") as HTMLElement;
-const inputForm = document.querySelector(".city-overlay") 
-console.log(inputForm);
+import "../css/style.css";
+import { fetchWeather } from "./weather-api.js";
+import { renderWeather } from "./weather-renderer.js";
+import { setupSidebarToggle } from "./sidebar-controller.js";
+import { renderRecentSearches, saveRecentCity } from "./recent-searches.js";
 
-  let inputValue: string | null;
-  let typingTimer: number;
-  const doneTypingInterval = 1000;
-  input.addEventListener("input", (event: Event) => {
-    clearTimeout(typingTimer);
+const SEARCH_DEBOUNCE_MS = 500;
 
-    // Restart the countdown
-    typingTimer =  setTimeout( async() => {
-      const query = event.target.value.trim();
-      if (query) {
-      const {wheatherData} = await    fetchData(query)
-      if (!wheatherData) {
-        throw console.error("something went wrong")
-      }
-        weather = wheatherData;
+async function startApp(): Promise<void> {
+  setupSidebarToggle();
+  const cityInput = document.querySelector<HTMLInputElement>("#cityname_input");
+  const cityOverlay = document.querySelector<HTMLElement>(".city-overlay");
 
-      inputForm.hidden = true
-        localStorage.setItem("weather",JSON.stringify(weather))
-         injectHtmlInIndex(weather)
+  if (!cityInput || !cityOverlay) return;
 
-        
-      }
-    }, doneTypingInterval);
+  let debounceTimer: ReturnType<typeof setTimeout> | undefined;
+  const loadWeather = async (city: string): Promise<void> => {
+    try {
+      const weather = await fetchWeather(city);
+      cityOverlay.hidden = true;
+      localStorage.setItem("weather", JSON.stringify(weather));
+      localStorage.setItem("weather-city", city);
+      saveRecentCity(city);
+      renderWeather(weather, city);
+      renderRecentSearches((recentCity) => void loadWeather(recentCity));
+    } catch (error) {
+      console.error("Unable to load weather data.", error);
+    }
+  };
+
+  const scheduleWeatherLoad = (input: HTMLInputElement): void => {
+    window.clearTimeout(debounceTimer);
+    const city = input.value.trim();
+    if (!city) return;
+
+    debounceTimer = window.setTimeout(() => void loadWeather(city), SEARCH_DEBOUNCE_MS);
+  };
+
+  cityInput.addEventListener("input", () => scheduleWeatherLoad(cityInput));
+  document.querySelectorAll<HTMLInputElement>(".sidebar-search input, .mobile-search input").forEach((input) => {
+    input.addEventListener("input", () => scheduleWeatherLoad(input));
   });
-   
 
+  const savedWeather = localStorage.getItem("weather");
+  const savedCity = localStorage.getItem("weather-city");
+  if (savedWeather && savedCity) renderWeather(JSON.parse(savedWeather), savedCity);
+  renderRecentSearches((recentCity) => void loadWeather(recentCity));
+  const requestedCity = new URLSearchParams(window.location.search).get("city");
+  if (requestedCity) void loadWeather(requestedCity);
 }
 
-app();
+void startApp();
 
-export { app };
+export { startApp };

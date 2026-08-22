@@ -1,0 +1,1 @@
+function e(){let e=localStorage.getItem(`weather-city`),t=localStorage.getItem(`weather`);if(!(!e||!t))try{return{city:e,weather:JSON.parse(t)}}catch{return}}function t(e){e.innerHTML=`<p class="glass-card p-6 text-slate-300">Search for a city on the <a class="text-cyan" href="/">dashboard</a> to view live weather data here.</p>`}export{t as n,e as t};

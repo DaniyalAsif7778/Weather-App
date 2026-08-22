@@ -1,0 +1,1 @@
+import"./style-BF8bMiFV.js";var e=document.querySelector(`#clear-recent-cities`);e?.addEventListener(`click`,()=>{localStorage.removeItem(`recent-cities`),e.textContent=`History cleared`,e.disabled=!0});
